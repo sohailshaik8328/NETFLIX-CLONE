@@ -10,6 +10,7 @@ class Latest extends React.Component {
             data : []
         }
     }
+    
 
     componentDidMount() {
         // let key = "AIzaSyATQ0T4jQFL2eMH8fohes1iXtGRQXp3QZk"
