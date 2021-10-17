@@ -12,7 +12,8 @@ class Latest extends React.Component {
     }
 
     componentDidMount() {
-        let key = "AIzaSyATQ0T4jQFL2eMH8fohes1iXtGRQXp3QZk"
+        // let key = "AIzaSyATQ0T4jQFL2eMH8fohes1iXtGRQXp3QZk"
+        let key = "AIzaSyCYTdBHuZc20XtEYMeHT0WhrFCkGKwh7Gc"
 
         fetch(`https://www.googleapis.com/youtube/v3/search?part=snippet&key=${key}&q=latestseries2021&maxResults=50`)
         .then(res => res.json())

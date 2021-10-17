@@ -14,7 +14,8 @@ class SingleVideo extends React.Component {
    componentDidMount() {
        //my Api key :- AIzaSyDOg0GBBE8yS7XIpAshoICgJR6nVUwIFNw
        let {id} = this.props.match.params;
-       let key = "AIzaSyATQ0T4jQFL2eMH8fohes1iXtGRQXp3QZk"
+    //    let key = "AIzaSyATQ0T4jQFL2eMH8fohes1iXtGRQXp3QZk"
+    let key = "AIzaSyCYTdBHuZc20XtEYMeHT0WhrFCkGKwh7Gc"
 
        fetch(`https://www.googleapis.com/youtube/v3/videos?part=snippet&id=${id}&key=${key}`)
        .then(res => res.json())
