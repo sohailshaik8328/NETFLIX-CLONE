@@ -58,17 +58,6 @@ class Latest extends React.Component {
                     </div>
                 </header>
                 <section>
-                    {/* <div className="main_container flex wrap ">
-                        {
-                          data.map((items) => (
-                              <div className="movie_card flex-20" key={items.id} >
-                                    <img className="thumbnail" src={items.snippet.thumbnails.medium.url} alt="" />
-                                    <Link to={`/singlevideo/${items.id.videoId}`} className="movie_title">{items.snippet.title}</Link>
-                                    <iframe width="560" height="315" src={`https://www.youtube.com/embed/${items.id.videoId}`} title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                              </div>
-                          ))
-                        }
-                    </div> */}
                       <div className="main_container flex wrap between">
                         {
                           data.map((items) => (
@@ -77,7 +66,6 @@ class Latest extends React.Component {
                                         <img className="thumbnail" src={items.snippet.thumbnails.medium.url} alt="" />
                                   </Link>
                                     <p className="movie_title_single">{items.snippet.title}</p>
-                                    {/* <iframe width="560" height="315" src={`https://www.youtube.com/embed/${items.id.videoId}`} title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> */}
                               </div>
                           ))
                         }

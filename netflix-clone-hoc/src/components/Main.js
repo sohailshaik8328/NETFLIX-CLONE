@@ -1,32 +1,73 @@
 import React from 'react'
 import "../stylesheets/Main.css";
-import {Link} from "react-router-dom";
+import {Link, NavLink} from "react-router-dom";
 import Loader from './Loader';
+import WithData from './WithData';
+import { useEffect } from 'react';
+import styled from 'styled-components';
+import { useDispatch, useSelector } from 'react-redux';
+import { useHistory } from 'react-router-dom';
+import { auth, provider } from './Firebase/firebase';
+import {
+  selectUserName,
+  selectUserPhoto,
+  setUserLoginDetails,
+  setSignOutState,
+} from '../features/user/userSlice';
 
-class Hollywood extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            data : []
-        }
+
+let key = "AIzaSyCYTdBHuZc20XtEYMeHT0WhrFCkGKwh7Gc";
+let allUrl = `https://www.googleapis.com/youtube/v3/search?part=snippet&key=${key}&q=bollywoodmoviesnew2021&maxResults=50`
+
+function Main(props) {
+    const dispatch = useDispatch();
+  const history = useHistory();
+  const userName = useSelector(selectUserName);
+  const userPhoto = useSelector(selectUserPhoto);
+
+  useEffect(() => {
+    auth.onAuthStateChanged(async (user) => {
+      if (user) {
+        setUser(user);
+        history.push('/main');
+      }
+    });
+  }, [userName]);
+
+  const handleAuth = () => {
+    if (!userName) {
+      auth
+        .signInWithPopup(provider)
+        .then((result) => {
+          setUser(result.user);
+        })
+        .catch((error) => {
+          alert(error.message);
+        });
+    } else if (userName) {
+      auth
+        .signOut()
+        .then(() => {
+          dispatch(setSignOutState());
+          history.push('/');
+        })
+        .catch((err) => alert(err.message));
     }
+  };
 
-    componentDidMount() {
-        // let key = "AIzaSyATQ0T4jQFL2eMH8fohes1iXtGRQXp3QZk"
-        let key = "AIzaSyCYTdBHuZc20XtEYMeHT0WhrFCkGKwh7Gc"
+  const setUser = (user) => {
+    dispatch(
+      setUserLoginDetails({
+        name: user.displayName,
+        email: user.email,
+        photo: user.photoURL,
+      })
+    );
+  };
 
-        fetch(`https://www.googleapis.com/youtube/v3/search?part=snippet&key=${key}&q=hollywoodseries&maxResults=50`)
-        .then(res => res.json())
-        .then(data => this.setState({
-            data : data.items
-        }))
-    }
-
-   
-    render() {
-        let {data} = this.state;
+           let {data} = props;
         // console.log(data)
-        if(!this.state.data.length) {
+        if(!data.length) {
             return (
                 <Loader />
             )
@@ -41,23 +82,24 @@ class Hollywood extends React.Component {
                             </section>
 
                             <section>
-                                <ul className="flex ">
-                                    <li><Link to="/main" className="main_nav_a" href="#">All</Link></li>
-                                    <li><Link to="/music" className="main_nav_a" href="#">Music</Link></li>
-                                    <li><Link to="/hollywood" className="main_nav_a" href="#">Hollywood</Link></li>
-                                    <li><Link to="/trending" className="main_nav_a" href="#">Trending</Link></li>
-                                    <li><Link to="/latest" className="main_nav_a" href="#">Latest</Link></li>
+                                 <ul className="flex ">
+                                    <li><NavLink activeClassName="nav_active" to="/main" className="main_nav_a" href="#">All</NavLink></li>
+                                    <li><NavLink activeClassName="nav_active" to="/music" className="main_nav_a" href="#">Music</NavLink></li>
+                                    <li><NavLink activeClassName="nav_active" to="/hollywood" className="main_nav_a" href="#">Hollywood</NavLink></li>
+                                    <li><NavLink activeClassName="nav_active" to="/trending" className="main_nav_a" href="#">Trending</NavLink></li>
+                                    <li><NavLink activeClassName="nav_active" to="/latest" className="main_nav_a" href="#">Latest</NavLink></li>
                                 </ul>
                             </section>
 
-                            <section className="header_right_main">
-                                <Link  to="/" className="btn btn-rounded main_btn_signout">Sign Out</Link>
+                            <section className="header_right_main flex between align_center">
+                                <img className="userPhoto" src={userPhoto} alt="userPhoto" />
+                                <h2 className="userName">{userName}</h2>
+                                <Link onClick={handleAuth} to="/" className="btn btn-rounded main_btn_signout">Sign Out</Link>
                             </section>
                         </div>
                     </div>
                 </header>
                 <section>
-
                     <div className="main_container flex wrap between">
                         {
                           data.map((items) => (
@@ -108,7 +150,6 @@ class Hollywood extends React.Component {
                         
             </>
         )
-    }
 }
 
-export default Hollywood
+export default  WithData(Main, allUrl)
