@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react'
+import React, {useState, useEffect,useContext} from 'react'
 import "../stylesheets/Home.css";
 import {Link} from "react-router-dom";
 import styled from 'styled-components';
@@ -12,12 +12,15 @@ import {
   setSignOutState,
 } from '../features/user/userSlice';
 
-
+// import React, {  } from 'react'
+import UserContext from './Context'
 function Home() {
+ 
     const dispatch = useDispatch();
     const history = useHistory();
     const userName = useSelector(selectUserName);
     const userPhoto = useSelector(selectUserPhoto);
+    const hello = useContext(UserContext)
     useEffect(() => {
         auth.onAuthStateChanged(async (user) => {
           if (user) {
@@ -26,7 +29,7 @@ function Home() {
           }
         });
       }, [userName]);
-    
+      console.log(hello,"user")
       const handleAuth = () => {
         if (!userName) {
           auth

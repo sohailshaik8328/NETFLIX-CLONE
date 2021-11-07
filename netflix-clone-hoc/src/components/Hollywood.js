@@ -159,4 +159,4 @@ function Hollywood (props) {
         )
 }
 
-export default WithData(Hollywood, `https://www.googleapis.com/youtube/v3/search?part=snippet&key=AIzaSyCYTdBHuZc20XtEYMeHT0WhrFCkGKwh7Gc&q=hollywoodseries&maxResults=50`) 
+export default WithData(Hollywood, `https://www.googleapis.com/youtube/v3/search?part=snippet&key=AIzaSyBn8eLExZk5XSBEE7eB4dJePszGJx4P9JA&q=hollywoodseries&maxResults=50`) 

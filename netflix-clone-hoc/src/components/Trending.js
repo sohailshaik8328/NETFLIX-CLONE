@@ -20,7 +20,7 @@ import {
   setSignOutState,
 } from '../features/user/userSlice';
 
-let key = "AIzaSyCYTdBHuZc20XtEYMeHT0WhrFCkGKwh7Gc";
+let key = "AIzaSyBn8eLExZk5XSBEE7eB4dJePszGJx4P9JA";
 let trendingUrl = `https://www.googleapis.com/youtube/v3/search?part=snippet&key=${key}&q=trendingastralia&maxResults=50`
 
 

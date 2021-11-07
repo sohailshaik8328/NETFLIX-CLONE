@@ -16,7 +16,7 @@ import {
 } from '../features/user/userSlice';
 
 
-let key = "AIzaSyCYTdBHuZc20XtEYMeHT0WhrFCkGKwh7Gc";
+let key = "AIzaSyBn8eLExZk5XSBEE7eB4dJePszGJx4P9JA";
 let allUrl = `https://www.googleapis.com/youtube/v3/search?part=snippet&key=${key}&q=bollywoodmoviesnew2021&maxResults=50`
 
 function Main(props) {

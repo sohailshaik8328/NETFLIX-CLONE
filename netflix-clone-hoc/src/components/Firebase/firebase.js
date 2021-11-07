@@ -8,13 +8,21 @@ import firebase from 'firebase/compat/app';
 import 'firebase/compat/auth';
 import 'firebase/compat/firestore';
 // Your web app's Firebase configuration
+// const firebaseConfig = {
+//   apiKey: "AIzaSyCv98gWqpF4-BimP5JbMfXhjnTbgusytVQ",
+//   authDomain: "netflix-auth-cc206.firebaseapp.com",
+//   projectId: "netflix-auth-cc206",
+//   storageBucket: "netflix-auth-cc206.appspot.com",
+//   messagingSenderId: "268299568558",
+//   appId: "1:268299568558:web:804dedb765aeff8e2ff43f"
+// };
 const firebaseConfig = {
   apiKey: "AIzaSyCv98gWqpF4-BimP5JbMfXhjnTbgusytVQ",
   authDomain: "netflix-auth-cc206.firebaseapp.com",
   projectId: "netflix-auth-cc206",
   storageBucket: "netflix-auth-cc206.appspot.com",
   messagingSenderId: "268299568558",
-  appId: "1:268299568558:web:804dedb765aeff8e2ff43f"
+  appId: "1:268299568558:web:e9990e06eebc00f22ff43f"
 };
 
 // Initialize Firebase
