@@ -67,7 +67,7 @@ function Home() {
                 <div className="showcase-top">
                     <img src="/images/logo (1).png" alt="Netflix Logo" />
                     <Link  onClick={handleAuth} className="btn btn-rounded google_btn">Sign In with google</Link>
-                    <Link to="/signin" className="btn btn-rounded">Sign In</Link>
+                    {/* <Link to="/signin" className="btn btn-rounded">Sign In</Link> */}
                 </div>
                 {/* <SignOut>
                     <UserImg src={userPhoto} alt={userName} />

@@ -41,6 +41,9 @@
   img{
 	width: 100%;
   }
+  .google_btn {
+	  margin-right: -3rem;
+  }
   
   .showcase{
 	width: 100%;
